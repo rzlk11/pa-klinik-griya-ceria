@@ -11,8 +11,11 @@ export const getDokter = async (req, res) => {
 
 export const getDokterById = async (req, res) => {
   try {
-    const dokter = await Dokter.findOne({ where: { id_dokter: req.params.id } });
-    if (!dokter) return res.status(404).json({ msg: "Dokter tidak ditemukan!" });
+    const dokter = await Dokter.findOne({
+      where: { id_dokter: req.params.id },
+    });
+    if (!dokter)
+      return res.status(404).json({ msg: "Dokter tidak ditemukan!" });
     res.status(200).json(dokter);
   } catch (error) {
     res.status(500).json({ msg: error.message });
@@ -30,8 +33,11 @@ export const createDokter = async (req, res) => {
 
 export const updateDokter = async (req, res) => {
   try {
-    const dokter = await Dokter.findOne({ where: { id_dokter: req.params.id } });
-    if (!dokter) return res.status(404).json({ msg: "Dokter tidak ditemukan!" });
+    const dokter = await Dokter.findOne({
+      where: { id_dokter: req.params.id },
+    });
+    if (!dokter)
+      return res.status(404).json({ msg: "Dokter tidak ditemukan!" });
     await Dokter.update(req.body, { where: { id_dokter: req.params.id } });
     res.status(200).json({ msg: "Dokter berhasil diupdate!" });
   } catch (error) {
@@ -41,8 +47,11 @@ export const updateDokter = async (req, res) => {
 
 export const deleteDokter = async (req, res) => {
   try {
-    const dokter = await Dokter.findOne({ where: { id_dokter: req.params.id } });
-    if (!dokter) return res.status(404).json({ msg: "Dokter tidak ditemukan!" });
+    const dokter = await Dokter.findOne({
+      where: { id_dokter: req.params.id },
+    });
+    if (!dokter)
+      return res.status(404).json({ msg: "Dokter tidak ditemukan!" });
     await Dokter.destroy({ where: { id_dokter: req.params.id } });
     res.status(200).json({ msg: "Dokter berhasil dihapus!" });
   } catch (error) {
