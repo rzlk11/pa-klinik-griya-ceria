@@ -5,6 +5,10 @@ export const getPasien = async (req, res) => {
   try {
     const response = await Pasien.findAll({
       attributes: ["uuid", "name", "date_of_birth", "gender"],
+      include: {
+        model: OrangTua,
+        required: false,
+      },
     });
     res.status(200).json(response);
   } catch (error) {
@@ -20,7 +24,7 @@ export const getPasienById = async (req, res) => {
       },
       include: {
         model: OrangTua,
-        required: false
+        required: false,
       },
     });
     if (!pasien)

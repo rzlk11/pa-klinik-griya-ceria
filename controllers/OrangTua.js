@@ -5,6 +5,11 @@ export const getOrangTua = async (req, res) => {
   try {
     const response = await OrangTua.findAll({
       attributes: ["uuid", "name", "relation", "phone"],
+      include: {
+        model: Pasien,
+        as: "anak",
+        required: false,
+      },
     });
     res.status(200).json(response);
   } catch (error) {
@@ -21,7 +26,7 @@ export const getOrangTuaById = async (req, res) => {
       include: {
         model: Pasien,
         as: "anak",
-        required: false
+        required: false,
       },
     });
     if (!orangtua)
@@ -54,7 +59,8 @@ export const updateOrangTua = async (req, res) => {
       uuid: req.params.id,
     },
   });
-  if (!pasien) return res.status(404).json({ msg: "Data Orang Tua tidak ditemukan!" });
+  if (!pasien)
+    return res.status(404).json({ msg: "Data Orang Tua tidak ditemukan!" });
 
   try {
     await OrangTua.update(
@@ -81,7 +87,8 @@ export const deleteOrangTua = async (req, res) => {
       uuid: req.params.id,
     },
   });
-  if (!pasien) return res.status(404).json({ msg: "Data Orang Tua tidak ditemukan!" });
+  if (!pasien)
+    return res.status(404).json({ msg: "Data Orang Tua tidak ditemukan!" });
   try {
     await OrangTua.destroy({
       where: {
