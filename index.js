@@ -8,6 +8,12 @@ import UserRoutes from './routes/UserRoutes.js';
 import PasienRoutes from './routes/PasienRoutes.js';
 import AuthRoutes from './routes/AuthRoutes.js';
 import OrangTuaRoutes from './routes/OrangTuaRoutes.js';
+import DetailResepObatRoutes from './routes/DetailResepObatRoutes.js';
+import DokterRoutes from './routes/DokterRoutes.js';
+import ObatRoutes from './routes/ObatRoutes.js';
+import PelayananKesehatanRoutes from './routes/PelayananKesehatanRoutes.js';
+import RekamMedisRoutes from './routes/RekamMedisRoutes.js';
+import TransaksiRoutes from './routes/TransaksiRoutes.js';
 
 dotenv.config();
 
@@ -19,9 +25,9 @@ const store = new sessionStore({
     db: db
 });
 
-// (async() => {
-//     await db.sync();
-// })();
+(async() => {
+    await db.sync();
+})();
 
 app.use(cors({
     credentials: true,
@@ -44,8 +50,14 @@ app.use(UserRoutes);
 app.use(PasienRoutes);
 app.use(AuthRoutes);
 app.use(OrangTuaRoutes);
+app.use(DetailResepObatRoutes);
+app.use(DokterRoutes);
+app.use(ObatRoutes);
+app.use(PelayananKesehatanRoutes);
+app.use(RekamMedisRoutes);
+app.use(TransaksiRoutes);
 
-// store.sync();
+store.sync();
 
 app.listen(process.env.APP_PORT, () =>{
     console.log('Server up and running...');
