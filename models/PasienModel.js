@@ -1,6 +1,7 @@
 import { Sequelize } from "sequelize";
 import db from "../config/Database.js";
 import OrangTua from "./OrangTuaModel.js";
+import ResepObat from "./ResepObatModel.js";
 
 const { DataTypes } = Sequelize;
 
@@ -41,5 +42,7 @@ const Pasien = db.define('pasien', {
 
 OrangTua.hasMany(Pasien, {as: 'anak'});
 Pasien.belongsTo(OrangTua);
+Pasien.hasMany(ResepObat, { foreignKey: "id_pasien", as: "reseps" });
+ResepObat.belongsTo(Pasien, { foreignKey: "id_pasien", as: "pasien" });
 
 export default Pasien;

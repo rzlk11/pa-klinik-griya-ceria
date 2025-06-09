@@ -1,14 +1,30 @@
 import Pasien from "../models/PasienModel.js";
 import OrangTua from "../models/OrangTuaModel.js";
+import ResepObat from "../models/ResepObatModel.js";
+import DetailResepObat from "../models/DetailResepObatModel.js";
 
 export const getPasien = async (req, res) => {
   try {
     const response = await Pasien.findAll({
       attributes: ["uuid", "name", "date_of_birth", "gender"],
-      include: {
-        model: OrangTua,
-        required: false,
-      },
+      include: [
+        {
+          model: OrangTua,
+          required: false,
+        },
+        {
+          model: ResepObat,
+          as: "reseps",
+          required: false,
+          include: [
+            {
+              model: DetailResepObat,
+              as: "details",
+              required: false,
+            },
+          ],
+        },
+      ],
     });
     res.status(200).json(response);
   } catch (error) {
@@ -22,10 +38,24 @@ export const getPasienById = async (req, res) => {
       where: {
         uuid: req.params.id,
       },
-      include: {
-        model: OrangTua,
-        required: false,
-      },
+      include: [
+        {
+          model: OrangTua,
+          required: false,
+        },
+        {
+          model: ResepObat,
+          as: "reseps",
+          required: false,
+          include: [
+            {
+              model: DetailResepObat,
+              as: "details",
+              required: false,
+            },
+          ],
+        },
+      ],
     });
     if (!pasien)
       return res.status(404).json({ msg: "Pasien tidak ditemukan!" });
