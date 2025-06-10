@@ -22,7 +22,7 @@ const Transaksi = db.define('transaksi', {
   },
   id_resep: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    allowNull: true,
   },
   tanggal_transaksi: {
     type: DataTypes.DATEONLY,

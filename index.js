@@ -14,6 +14,7 @@ import ObatRoutes from './routes/ObatRoutes.js';
 import PelayananKesehatanRoutes from './routes/PelayananKesehatanRoutes.js';
 import RekamMedisRoutes from './routes/RekamMedisRoutes.js';
 import TransaksiRoutes from './routes/TransaksiRoutes.js';
+import ResepObatRoutes from './routes/ResepObatRoutes.js';
 
 dotenv.config();
 
@@ -41,6 +42,7 @@ app.use(session({
     store: store,
     cookie: {
         secure: 'auto',
+        maxAge: 24 * 60 * 60 * 1000,
     }
 }));
 
@@ -56,6 +58,7 @@ app.use(ObatRoutes);
 app.use(PelayananKesehatanRoutes);
 app.use(RekamMedisRoutes);
 app.use(TransaksiRoutes);
+app.use(ResepObatRoutes);
 
 store.sync();
 

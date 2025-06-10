@@ -12,7 +12,7 @@ const ResepObat = db.define('resep_obat', {
   },
   id_rekam_medis: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    allowNull: true,
   },
   tanggal_resep: {
     type: DataTypes.DATEONLY,
