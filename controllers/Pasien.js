@@ -6,7 +6,7 @@ import DetailResepObat from "../models/DetailResepObatModel.js";
 export const getPasien = async (req, res) => {
   try {
     const response = await Pasien.findAll({
-      attributes: ["uuid", "name", "date_of_birth", "gender"],
+      attributes: ["id", "uuid", "name", "date_of_birth", "gender"],
       include: [
         {
           model: OrangTua,

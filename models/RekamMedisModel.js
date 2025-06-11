@@ -11,15 +11,15 @@ const RekamMedis = db.define('rekam_medis', {
   },
   id_pasien: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    allowNull: true,
   },
   id_dokter: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    allowNull: true,
   },
   id_pelayanan: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    allowNull: true,
   },
   diagnosa: {
     type: DataTypes.TEXT,

@@ -4,7 +4,7 @@ import OrangTua from "../models/OrangTuaModel.js";
 export const getOrangTua = async (req, res) => {
   try {
     const response = await OrangTua.findAll({
-      attributes: ["uuid", "name", "relation", "phone"],
+      attributes: ["id", "uuid", "name", "relation", "phone"],
       include: {
         model: Pasien,
         as: "anak",

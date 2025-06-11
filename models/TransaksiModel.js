@@ -14,11 +14,11 @@ const Transaksi = db.define('transaksi', {
   },
   id_pasien: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    allowNull: true,
   },
   id_pelayanan: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    allowNull: true,
   },
   id_resep: {
     type: DataTypes.INTEGER,
